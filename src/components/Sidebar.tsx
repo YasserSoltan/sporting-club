@@ -1,11 +1,11 @@
 import { type JSX } from "react";
 import {
   Users,
-  LayoutDashboard,
   type LucideIcon,
   Volleyball,
 } from "lucide-react";
 import NavItem from "./NavItem";
+import Image from "next/image";
 
 interface SidebarItems {
   title: string;
@@ -14,7 +14,6 @@ interface SidebarItems {
 }
 
 const items: SidebarItems[] = [
-  { title: "overview", to: "/overview", icon: <LayoutDashboard /> },
   { title: "Sports", to: "/sports", icon: <Volleyball /> },
   { title: "Members", to: "/members", icon: <Users /> },
 ];
@@ -32,7 +31,19 @@ export default function DashboardSidebar(): JSX.Element {
         <aside className="bg-base-200 text-base-content min-h-full w-70 flex flex-col">
           {/* Sidebar Header */}
           <div className="p-4 border-b border-base-300">
-            <h2 className="text-lg font-semibold text-center">Dashboard</h2>
+            <div className="flex items-center justify-center gap-1">
+              <div className="w-10 h-10 relative">
+                <Image
+                  src="/logo.ico"
+                  alt="Club Logo"
+                  width={35}
+                  height={35}
+                  className="object-contain rounded-full"
+                  priority
+                />
+              </div>
+              <h2 className="text-xl font-semibold">Dashboard</h2>
+            </div>
           </div>
 
           {/* Navigation Menu */}

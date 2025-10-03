@@ -1,4 +1,4 @@
-import { Sport } from "@/types";
+import { Sport } from "@/types/sport";
 import Modal from "../ui/Modal";
 import SportsForm from "./SportsForm";
 

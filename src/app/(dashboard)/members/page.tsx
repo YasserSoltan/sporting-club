@@ -1,7 +1,8 @@
 import MembersSection from "@/components/members/MembersSection";
 import memberServices from "@/services/member";
 import sportsService from "@/services/sports";
-import { Sport, type Member } from "@/types";
+import { type Member } from "@/types/member";
+import { Sport } from "@/types/sport";
 import { Users } from "lucide-react";
 
 const Member = async () => {

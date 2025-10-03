@@ -1,10 +1,12 @@
 "use client";
-import { Sport } from "@/types";
+import { Sport } from "@/types/sport";
 import { useActionState, useEffect } from "react";
 import { createOrUpdateSport } from "@/actions/sports";
 import InputField from "../ui/Input";
 import SelectField from "../ui/Select";
 import toast from "react-hot-toast";
+import ErrorDisplay from "../ErrorDisplay";
+import FieldError from "../FieldError";
 
 interface SportFormProps {
   initialData?: Sport | null;
@@ -49,21 +51,14 @@ const SportsForm: React.FC<SportFormProps> = ({ initialData, onCancel }) => {
           <div className="space-y-4">
             <InputField
               label="Sport Name (EN)"
-              id="name-en"
+              id="name"
               type="text"
               name="name"
               disabled={isPending}
               defaultValue={initialData?.name || ""}
               placeholder="Sport Name (EN)"
             />
-            {state?.errors &&
-              "name" in state.errors &&
-              Array.isArray(state.errors.name) &&
-              state.errors.name.length > 0 && (
-                <div className="p-3 text-md text-center text-red-600 bg-red-50 rounded-md dark:bg-red-900/20 dark:text-red-400">
-                  {state.errors.name[0]}
-                </div>
-              )}
+            <FieldError errors={state?.errors} fieldName="name" />
           </div>
         </div>
 
@@ -94,14 +89,7 @@ const SportsForm: React.FC<SportFormProps> = ({ initialData, onCancel }) => {
                 disabled={isPending}
               />
             </div>
-            {state?.errors &&
-              "description" in state.errors &&
-              Array.isArray(state.errors.description) &&
-              state.errors.description.length > 0 && (
-                <div className="p-3 text-md text-center text-red-600 bg-red-50 rounded-md dark:bg-red-900/20 dark:text-red-400">
-                  {state.errors.description[0]}
-                </div>
-              )}
+            <FieldError errors={state?.errors} fieldName="description" />
           </div>
         </div>
 
@@ -123,22 +111,13 @@ const SportsForm: React.FC<SportFormProps> = ({ initialData, onCancel }) => {
               <option value="individual">Individual</option>
               <option value="team">Team</option>
             </SelectField>
-            {state?.errors &&
-              "type" in state.errors &&
-              Array.isArray(state.errors.type) &&
-              state.errors.type.length > 0 && (
-                <div className="p-3 text-md text-center text-red-600 bg-red-50 rounded-md dark:bg-red-900/20 dark:text-red-400">
-                  {state.errors.type[0]}
-                </div>
-              )}
+            <FieldError errors={state?.errors} fieldName="type" />
           </div>
         </div>
 
         {/* Server errors section */}
-        {state?.errors && "root" in state.errors && (
-          <div className="p-3 text-md text-center text-red-600 bg-red-50 rounded-md dark:bg-red-900/20 dark:text-red-400">
-            {state.errors.root}
-          </div>
+        {state?.errors?.root && (
+          <ErrorDisplay errors={state.errors.root} />
         )}
 
         {/* Action Buttons */}

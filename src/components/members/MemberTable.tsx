@@ -1,4 +1,4 @@
-import { Member } from "@/types";
+import { Member } from "@/types/member";
 import MemberRow from "./MemberRow";
 
 interface MemberTableProps {

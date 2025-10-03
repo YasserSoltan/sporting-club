@@ -1,10 +1,11 @@
 "use client";
 import { useModal } from "@/hooks/useModal";
-import { Member, Sport } from "@/types";
 import { Plus, Search } from "lucide-react";
 import MemberTable from "./MemberTable";
 import { useState } from "react";
 import MemberModal from "./MemberModal";
+import { Member } from "@/types/member";
+import { Sport } from "@/types/sport";
 
 const MembersSection = ({ members, sports }: { members: Member[], sports: Sport[] }) => {
   const [searchTerm, setSearchTerm] = useState("");

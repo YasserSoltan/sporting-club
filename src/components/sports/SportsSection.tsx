@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Plus, Search } from "lucide-react";
 import { useModal } from "@/hooks/useModal";
-import { Sport } from "@/types";
+import { Sport } from "@/types/sport";
 import SportsCard from "./SportsCard";
 import SportsModal from "./SportsModal";
 
@@ -49,8 +49,8 @@ const SportsSection = ({ sports }: { sports: Sport[] }) => {
             </div>
             <button
               onClick={handleAddSport}
-              className="flex items-center gap-2 bg-primary hover:bg-darker-primary text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:shadow-lg transform hover:-translate-y-0.5 cursor-pointer"
-            >
+              className="btn-gradient flex items-center cursor-pointer space-x-2 text-white px-6 py-3 rounded-lg transition-colors shadow-md hover:shadow-lg"
+              >
               <Plus className="w-5 h-5" />
               Add Sport
             </button>

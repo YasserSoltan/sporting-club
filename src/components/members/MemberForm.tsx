@@ -1,10 +1,13 @@
 "use client";
-import { Member, Sport } from "@/types";
-import { Mail, Phone, User, X, Plus } from "lucide-react";
+import { Mail, Phone, User, X } from "lucide-react";
 import { useActionState, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import InputField from "../ui/Input";
 import { createOrUpdateMember } from "@/actions/members";
+import FieldError from "../FieldError";
+import ErrorDisplay from "../ErrorDisplay";
+import { Member } from "@/types/member";
+import { Sport } from "@/types/sport";
 
 interface MemberFormProps {
   onCancel: () => void;
@@ -71,14 +74,7 @@ const MemberForm: React.FC<MemberFormProps> = ({ onCancel, initialData, sports }
         disabled={isPending}
         defaultValue={initialData?.name || ""}
       />
-      {state?.errors &&
-        "name" in state.errors &&
-        Array.isArray(state.errors.name) &&
-        state.errors.name.length > 0 && (
-          <div className="p-3 text-md text-center text-red-600 bg-red-50 rounded-md dark:bg-red-900/20 dark:text-red-400">
-            {state.errors.name[0]}
-          </div>
-        )}
+      <FieldError errors={state?.errors} fieldName="name" />
 
       {/* Email */}
       <InputField
@@ -91,14 +87,7 @@ const MemberForm: React.FC<MemberFormProps> = ({ onCancel, initialData, sports }
         disabled={isPending}
         defaultValue={initialData?.email || ""}
       />
-      {state?.errors &&
-        "email" in state.errors &&
-        Array.isArray(state.errors.email) &&
-        state.errors.email.length > 0 && (
-          <div className="p-3 text-md text-center text-red-600 bg-red-50 rounded-md dark:bg-red-900/20 dark:text-red-400">
-            {state.errors.email[0]}
-          </div>
-        )}
+      <FieldError errors={state?.errors} fieldName="email" />
 
       {/* Phone */}
       <InputField
@@ -110,14 +99,7 @@ const MemberForm: React.FC<MemberFormProps> = ({ onCancel, initialData, sports }
         disabled={isPending}
         defaultValue={initialData?.phone || ""}
       />
-      {state?.errors &&
-        "phone" in state.errors &&
-        Array.isArray(state.errors.phone) &&
-        state.errors.phone.length > 0 && (
-          <div className="p-3 text-md text-center text-red-600 bg-red-50 rounded-md dark:bg-red-900/20 dark:text-red-400">
-            {state.errors.phone[0]}
-          </div>
-        )}
+      <FieldError errors={state?.errors} fieldName="phone" />
 
       {/* sports */}
       <div className="space-y-3">
@@ -190,17 +172,10 @@ const MemberForm: React.FC<MemberFormProps> = ({ onCancel, initialData, sports }
           </p>
         )}
       </div>
+      <FieldError errors={state?.errors} fieldName="sports" />
 
-      {state?.errors?.sports && (
-        <div className="p-3 text-md text-center text-red-600 bg-red-50 rounded-md dark:bg-red-900/20 dark:text-red-400">
-          {state.errors.sports[0]}
-        </div>
-      )}
-
-      {state?.errors && "root" in state.errors && (
-        <div className="p-3 text-md text-center text-red-600 bg-red-50 rounded-md dark:bg-red-900/20 dark:text-red-400">
-          {state.errors.root}
-        </div>
+      {state?.errors?.root && (
+        <ErrorDisplay errors={state.errors.root} />
       )}
 
       {/* actions */}

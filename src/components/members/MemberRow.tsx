@@ -1,9 +1,9 @@
 "use client";
 import { Edit, Trash2 } from "lucide-react";
 import Swal from "sweetalert2";
-import { Member } from "@/types";
 import { deleteMember } from "@/actions/members";
 import toast from "react-hot-toast";
+import { Member } from "@/types/member";
 
 interface MemberRowProps {
   member: Member;
@@ -75,7 +75,7 @@ const MemberRow: React.FC<MemberRowProps> = ({ member, onEditMember }) => {
           <div
             tabIndex={0}
             role="button"
-            className="btn btn-gradient text-primary-foreground border-none shadow-sm hover:shadow-md transition-all rounded-2xl duration-300 m-1"
+            className="btn btn-gradient text-white border-none shadow-sm hover:shadow-md transition-all rounded-2xl duration-300 m-1 ms-3"
           >
             Sports
           </div>

@@ -3,5 +3,5 @@ export interface Member {
   name: string;
   email: string;
   phone?: string;
-  sports?: string[]; // Array of sport IDs
+  sports?: string[];
 }

@@ -1,5 +1,5 @@
 import { deleteSport } from "@/actions/sports";
-import { Sport } from "@/types";
+import { Sport } from "@/types/sport";
 import { Edit, Trash2 } from "lucide-react";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";

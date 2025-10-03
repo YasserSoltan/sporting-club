@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
-import { Member, Sport } from "@/types";
 import Modal from "../ui/Modal";
 import MemberForm from "./MemberForm";
-import sportsService from "@/services/sports";
+import { Member } from "@/types/member";
+import { Sport } from "@/types/sport";
 
 interface MemberModalProps {
   isOpen: boolean;
