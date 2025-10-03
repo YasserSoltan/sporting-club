@@ -22,3 +22,4 @@ A simple frontend application for managing sports, members, and subscriptions.
 - MSW for mocking
 
 ## Live Demo
+https://sporting-club.vercel.app/
