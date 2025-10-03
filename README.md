@@ -19,7 +19,7 @@ A simple frontend application for managing sports, members, and subscriptions.
 - Next.js 14
 - TypeScript
 - Tailwind CSS
-- MSW for mocking
+- Json-Server for mocking
 
 ## Live Demo
 https://sporting-club.vercel.app/
