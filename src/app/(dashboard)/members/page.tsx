@@ -1,10 +1,12 @@
 import MembersSection from "@/components/members/MembersSection";
 import memberServices from "@/services/member";
-import { type Member } from "@/types";
+import sportsService from "@/services/sports";
+import { Sport, type Member } from "@/types";
 import { Users } from "lucide-react";
 
 const Member = async () => {
   const members: Member[] = await memberServices.getMembers();
+  const sports: Sport[] = await sportsService.getSports();
   // console.log('API URL:', `${process.env.DATABASE_URL}/members`);
 
 
@@ -31,7 +33,7 @@ const Member = async () => {
           </div>
         </div>
       </div>
-      <MembersSection members={members} />
+      <MembersSection members={members} sports={sports} />
     </div>
   );
 };

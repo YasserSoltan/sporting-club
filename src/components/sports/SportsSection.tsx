@@ -12,7 +12,7 @@ const SportsSection = ({ sports }: { sports: Sport[] }) => {
   const sportModal = useModal();
 
   const filteredSports = sports.filter((sport) =>
-    sport.name.toLowerCase().includes(searchTerm.toLowerCase())
+    sport.name?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   // Handle add sport

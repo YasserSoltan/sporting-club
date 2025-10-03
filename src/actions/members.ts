@@ -8,13 +8,15 @@ import { revalidatePath } from "next/cache";
 export async function createOrUpdateMember(prevState: any, formData: FormData) {
   const memberId = formData.get("id") as string | null;
   const isEdit = !!memberId;
+  const sportsJson = formData.get("sports") as string;
+  const sports = sportsJson ? JSON.parse(sportsJson) : [];
   let res;
 
   const validatedFields = memberSchema.safeParse({
     name: formData.get("name"),
     email: formData.get("email"),
     phone: formData.get("phone"),
-    sports: formData.get("sports"),
+    sports: sports,
   });
 
   if (!validatedFields.success) {

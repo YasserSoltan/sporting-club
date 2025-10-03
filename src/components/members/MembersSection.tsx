@@ -1,12 +1,12 @@
 "use client";
 import { useModal } from "@/hooks/useModal";
-import { Member } from "@/types";
+import { Member, Sport } from "@/types";
 import { Plus, Search } from "lucide-react";
 import MemberTable from "./MemberTable";
 import { useState } from "react";
 import MemberModal from "./MemberModal";
 
-const MembersSection = ({ members }: { members: Member[] }) => {
+const MembersSection = ({ members, sports }: { members: Member[], sports: Sport[] }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [editingMember, setEditingMember] = useState<Member | null>(null);
   const memberModal = useModal();
@@ -85,6 +85,7 @@ const MembersSection = ({ members }: { members: Member[] }) => {
         isOpen={memberModal.isOpen}
         onClose={handleCloseModal}
         editingMember={editingMember}
+        sports={sports}
       />
     </div>
   );

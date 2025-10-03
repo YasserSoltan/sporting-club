@@ -3,7 +3,7 @@ import { SportFormInputs } from "@/utils/validations/sport";
 const sportsService = {
   // get all sports
   getSports: async () => {
-    const res = await fetch(`https://sport-app-json-server.onrender.com/sports`, {
+    const res = await fetch(`${process.env.DATABASE_URL}/sports`, {
       cache: "no-store",
     });
     return res.json();

@@ -25,7 +25,6 @@ const MemberForm: React.FC<MemberFormProps> = ({ onCancel, initialData, sports }
     setSelectedSports(selectedSports.filter((sport) => sport !== sportName));
   };
 
-  // Get available sports (not yet selected)
   const availableSports = sports.filter(
     (sport) => !selectedSports.includes(sport.name)
   );
@@ -52,9 +51,16 @@ const MemberForm: React.FC<MemberFormProps> = ({ onCancel, initialData, sports }
 
   return (
     <form action={formAction} className="p-6 space-y-4">
+      {/* Hidden ID field */}
       {initialData?.id && (
         <input type="hidden" name="id" value={initialData.id} />
       )}
+      {/* Single hidden field for all sports as JSON */}
+      <input
+        type="hidden"
+        name="sports"
+        value={JSON.stringify(selectedSports)}
+      />
       {/* name */}
       <InputField
         label="Name"
@@ -118,7 +124,7 @@ const MemberForm: React.FC<MemberFormProps> = ({ onCancel, initialData, sports }
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
           Sports
         </label>
-        
+
         {/* Selected Sports */}
         {selectedSports.length > 0 && (
           <div className="space-y-2">
@@ -145,7 +151,7 @@ const MemberForm: React.FC<MemberFormProps> = ({ onCancel, initialData, sports }
         )}
 
         {/* Available Sports Dropdown */}
-        {availableSports.length > 0 && (
+        {sports.length > 0 && (
           <div className="space-y-2">
             <p className="text-sm text-gray-600 dark:text-gray-400">Add Sports:</p>
             <div className="flex gap-2">
@@ -156,7 +162,7 @@ const MemberForm: React.FC<MemberFormProps> = ({ onCancel, initialData, sports }
                 onChange={(e) => {
                   if (e.target.value) {
                     addSport(e.target.value);
-                    e.target.value = ""; // Reset selection
+                    e.target.value = "";
                   }
                 }}
                 disabled={isPending}
@@ -168,23 +174,6 @@ const MemberForm: React.FC<MemberFormProps> = ({ onCancel, initialData, sports }
                   </option>
                 ))}
               </select>
-              <button
-                type="button"
-                onClick={() => {
-                  const select = document.querySelector('select');
-                  if (select?.value) {
-                    addSport(select.value);
-                    select.value = "";
-                  }
-                }}
-                className="flex items-center gap-2 bg-primary hover:bg-darker-primary 
-                         text-white px-4 py-2 rounded-lg font-medium transition-all 
-                         duration-200 cursor-pointer disabled:opacity-50"
-                disabled={isPending}
-              >
-                <Plus className="w-4 h-4" />
-                Add
-              </button>
             </div>
           </div>
         )}
