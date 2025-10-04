@@ -11,6 +11,7 @@ const SportsSection = ({ sports }: { sports: Sport[] }) => {
   const [editingSport, setEditingSport] = useState<Sport | null>(null);
   const sportModal = useModal();
 
+  // Filter based on search
   const filteredSports = sports.filter((sport) =>
     sport.name?.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -99,6 +100,7 @@ const SportsSection = ({ sports }: { sports: Sport[] }) => {
           </div>
         </div>
       </div>
+      {/* sports modal to add or edit */}
       <SportsModal
         isOpen={sportModal.isOpen}
         onClose={handleCloseModal}

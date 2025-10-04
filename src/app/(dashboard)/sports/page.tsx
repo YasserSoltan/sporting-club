@@ -1,6 +1,12 @@
 import SportsSection from "@/components/sports/SportsSection";
 import sportsService from "@/services/sports";
 import { Volleyball } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Sports Management",
+  description: "Manage and explore the various sports offered at our club",
+};
 
 const Sports: React.FC = async () => {
   const sports = await sportsService.getSports();

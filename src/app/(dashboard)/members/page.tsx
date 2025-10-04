@@ -4,6 +4,12 @@ import sportsService from "@/services/sports";
 import { type Member } from "@/types/member";
 import { Sport } from "@/types/sport";
 import { Users } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Members Management",
+  description: "Manage and explore the members of our club",
+};
 
 const Member = async () => {
   const members: Member[] = await memberServices.getMembers();
