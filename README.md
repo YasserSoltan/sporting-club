@@ -1,6 +1,6 @@
 # Sports Club Management System
 
-A modern, responsive frontend application for managing sports clubs, members, and subscriptions. Built with Next.js 14 and TypeScript.
+A modern, responsive frontend application for managing sports clubs, members, and subscriptions. Built with Next.js 15 and TypeScript.
 
 ## Features
 - View and add sports
@@ -21,7 +21,7 @@ A modern, responsive frontend application for managing sports clubs, members, an
 
 ## Tech Stack
 
-- **Framework**: Next.js 14 (App Router)
+- **Framework**: Next.js 15 (App Router)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS + daisyUI
 - **Icons**: Lucide React
