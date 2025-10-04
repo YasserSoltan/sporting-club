@@ -136,7 +136,7 @@ const SportsForm: React.FC<SportFormProps> = ({ initialData, onCancel }) => {
           <button
             type="submit"
             className="flex items-center gap-2 bg-primary hover:bg-darker-primary 
-                     text-primary-foreground px-8 py-3 rounded-lg font-medium 
+                     text-white px-8 py-3 rounded-lg font-medium 
                      transition-all duration-200 hover:shadow-lg 
                      transform hover:-translate-y-0.5 focus:ring-2 focus:ring-ring 
                      focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed

@@ -1,64 +1,52 @@
 @import "tailwindcss";
 @plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: "mytheme";
+  default: true; /* set as default */
+  prefersdark: false; /* set as default dark mode (prefers-color-scheme:dark) */
+  color-scheme: light; /* color of browser-provided UI */
 
-.dir-rtl {
-  direction: rtl;
-}
+  --font-main: "Poppins", sans-serif;
+  --font-arabic: "Cairo", sans-serif;
 
-.dir-ltr {
-  direction: ltr;
-}
+  --color-primary: #11679d;
+  --color-darker-primary: #093652;
+  --color-lighter-primary: #4a9fd8;
 
-html {
-  scroll-behavior: smooth;
-}
+  --color-background: #ffffff;
+  --color-foreground: #fff;
+  --color-card: #ffffff;
+  --color-card-foreground: #000000;
+  --color-primary-foreground: #ffffff;
 
-/* Apply Cairo font to all elements when in RTL mode */
-html[dir="rtl"] * {
-  font-family: var(--font-arabic);
-}
+  --color-secondary: #3499cc;
+  --color-secondary-foreground: #ffffff;
+  --color-accent: #e2e8f0;
+  --color-accent-foreground: #0e5680;
+  --color-border: #cbd5e1;
+  --color-ring: #2a7aa3;
 
-:root {
-  --font-main: 'Poppins', sans-serif;
-  --font-arabic: 'Cairo', sans-serif;
-  
-  --primary: #11679D;
-  --darker-primary: #093652;
-  --lighter-primary: #4a9fd8;
-  
-  /* Base colors */
-  --background: #ffffff;
-  --foreground: #fff;
-  --card: #ffffff;
-  --card-foreground: #000000;
-  --primary-foreground: #ffffff;
-  
-  /* Supporting colors */
-  --secondary: #3499CC;
-  --secondary-foreground: #ffffff;
-  --accent: #e2e8f0;
-  --accent-foreground: #0e5680;
-  --border: #cbd5e1;
-  --ring: #2a7aa3;
+  --color-destructive: #b91c1c;
+  --color-destructive-foreground: #ffffff;
 }
 
 * {
-  border-color: var(--border);
+  border-color: var(--color-border);
 }
 
 body {
-  background-color: var(--background);
+  background-color: var(--color-background);
   color: var(--foreground);
   overflow-x: hidden;
 }
 
 .btn-gradient {
-  background: linear-gradient(to right, var(--primary), var(--lighter-primary));
-  transition: all 0.3s ease;  
+  background: linear-gradient(to right, var(--color-primary), var(--color-lighter-primary));
+  transition: all 0.3s ease;
 }
 
 .btn-gradient:hover {
-  background: linear-gradient(to right, var(--darker-primary), var(--primary));
+  background: linear-gradient(to right, var(--color-darker-primary), var(--color-primary));
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(14, 86, 128, 0.3);
 }

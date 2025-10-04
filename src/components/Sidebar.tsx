@@ -7,13 +7,13 @@ import {
 import NavItem from "./NavItem";
 import Image from "next/image";
 
-interface SidebarItems {
+interface SidebarTabs {
   title: string;
   to: string;
   icon: React.ReactElement<LucideIcon>;
 }
 
-const items: SidebarItems[] = [
+const tabs: SidebarTabs[] = [
   { title: "Sports", to: "/sports", icon: <Volleyball /> },
   { title: "Members", to: "/members", icon: <Users /> },
 ];
@@ -49,12 +49,12 @@ export default function DashboardSidebar(): JSX.Element {
           {/* Navigation Menu */}
           <nav className="flex-1 p-4">
             <ul className="menu gap-2">
-              {items.map((item: SidebarItems) => (
+              {tabs.map((tab: SidebarTabs) => (
                 <NavItem
-                  key={item.title}
-                  icon={item.icon}
-                  title={item.title}
-                  path={item.to}
+                  key={tab.title}
+                  icon={tab.icon}
+                  title={tab.title}
+                  path={tab.to}
                 />
               ))}
             </ul>

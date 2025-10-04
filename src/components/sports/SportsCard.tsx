@@ -1,6 +1,6 @@
 import { deleteSport } from "@/actions/sports";
 import { Sport } from "@/types/sport";
-import { Edit, Trash2 } from "lucide-react";
+import { Edit, Trash2, User, Users } from "lucide-react";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 
@@ -26,9 +26,9 @@ const SportsCard: React.FC<SportsCardProps> = ({ sport, onEdit }) => {
       cancelButtonText: "Cancel",
       customClass: {
         confirmButton:
-          "bg-primary hover:bg-darker-primary p-4 rounded-xl mx-2 text-primary-foreground cursor-pointer",
+          "bg-primary hover:bg-primary/80 p-4 rounded-xl mx-2 text-white cursor-pointer",
         cancelButton:
-          "bg-destructive hover:bg-destructive/80 p-4 rounded-xl text-primary-foreground cursor-pointer",
+          "bg-red-600 hover:bg-red-700 border border-red-200 p-4 rounded-xl text-white cursor-pointer",
       },
       buttonsStyling: false,
     });
@@ -43,6 +43,22 @@ const SportsCard: React.FC<SportsCardProps> = ({ sport, onEdit }) => {
     }
   };
 
+  const getTypeBadge = (type: string) => {
+    const isTeam = type === "team";
+    return {
+      label: isTeam ? "Team" : "Individual",
+      icon: isTeam ? Users : User,
+      color: isTeam
+        ? "bg-blue-100 text-blue-800 border-blue-200"
+        : "bg-green-100 text-green-800 border-green-200",
+      darkColor: isTeam
+        ? "dark:bg-blue-900/20 dark:text-blue-300 dark:border-blue-800"
+        : "dark:bg-green-900/20 dark:text-green-300 dark:border-green-800",
+    };
+  };
+
+  const typeBadge = getTypeBadge(sport.type);
+
   return (
     <>
       <div
@@ -56,15 +72,28 @@ const SportsCard: React.FC<SportsCardProps> = ({ sport, onEdit }) => {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
         <div
-          className={`absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-green-500 to-green-600`}
+          className={`absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-primary to-secondary`}
         />
         <div className="relative z-10 flex flex-col h-full ">
           {/* Header */}
           <div className="flex justify-between items-start mb-4 min-h-[72px]">
             <div className="flex-1">
-              <h3 className="font-semibold text-xl text-gray-900 dark:text-white mb-1 group-hover:text-primary transition-colors duration-200 line-clamp-1">
-                {sport.name}
-              </h3>
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="font-semibold text-xl text-gray-900 dark:text-white mb-1 group-hover:text-primary transition-colors duration-200 line-clamp-1">
+                  {sport.name}
+                </h3>
+                {/* Type Badge */}
+                <span
+                  className={`
+                  inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium border
+                  ${typeBadge.color} ${typeBadge.darkColor}
+                  transition-colors duration-200
+                `}
+                >
+                  <typeBadge.icon className="w-3 h-3" />
+                  {typeBadge.label}
+                </span>
+              </div>
               {sport.description && (
                 <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed line-clamp-2">
                   {sport.description}

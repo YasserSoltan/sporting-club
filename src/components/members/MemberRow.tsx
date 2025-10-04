@@ -26,9 +26,9 @@ const MemberRow: React.FC<MemberRowProps> = ({ member, onEditMember }) => {
       cancelButtonText: "Cancel",
       customClass: {
         confirmButton:
-          "bg-primary hover:bg-darker-primary p-4 rounded-xl mx-2 text-primary-foreground cursor-pointer",
+          "bg-primary hover:bg-primary/80 p-4 rounded-xl mx-2 text-white cursor-pointer",
         cancelButton:
-          "bg-destructive hover:bg-destructive/80 p-4 rounded-xl text-primary-foreground cursor-pointer",
+          "bg-red-600 hover:bg-red-700 border border-red-200 p-4 rounded-xl text-white cursor-pointer",
       },
       buttonsStyling: false,
     });
@@ -81,7 +81,7 @@ const MemberRow: React.FC<MemberRowProps> = ({ member, onEditMember }) => {
           </div>
           <ul
             tabIndex={0}
-            className="dropdown-content menu bg-white border-2 border-menu-secondary rounded-lg z-100 w-52 p-2 shadow-lg"
+            className="dropdown-content menu bg-white border-2 border-menu-secondary rounded-lg z-100 w-52 p-2 shadow-lg absolute"
           >
             {member.sports && member.sports.length > 0 ? (
               member.sports.map((sport) => (

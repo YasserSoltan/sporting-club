@@ -15,7 +15,7 @@ const Sports: React.FC = async () => {
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
             {/* Title Section */}
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 bg-gradient-to-br from-primary to-darker-primary rounded-2xl flex items-center justify-center shadow">
+              <div className="w-16 h-16 px-3 lg:px-0 bg-primary rounded-2xl flex items-center justify-center shadow-lg">
                 <Volleyball className="w-8 h-8 text-white" />
               </div>
               <div>
@@ -31,7 +31,7 @@ const Sports: React.FC = async () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-6 py-6">
+      <div className="container mx-auto lg:px-6 py-6">
         <div className="transition-all duration-300">
           <SportsSection sports={sports} />
         </div>

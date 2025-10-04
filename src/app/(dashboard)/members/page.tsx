@@ -8,8 +8,6 @@ import { Users } from "lucide-react";
 const Member = async () => {
   const members: Member[] = await memberServices.getMembers();
   const sports: Sport[] = await sportsService.getSports();
-  // console.log('API URL:', `${process.env.DATABASE_URL}/members`);
-
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
@@ -19,7 +17,7 @@ const Member = async () => {
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
             {/* Title Section */}
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 bg-gradient-to-br from-primary to-darker-primary rounded-2xl flex items-center justify-center shadow-lg">
+              <div className="w-16 h-16 px-3 lg:px-0 bg-primary rounded-2xl flex items-center justify-center shadow-lg">
                 <Users className="w-8 h-8 text-white" />
               </div>
               <div>

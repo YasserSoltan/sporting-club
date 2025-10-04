@@ -16,14 +16,13 @@ const MemberModal: React.FC<MemberModalProps> = ({
   editingMember = null,
   sports,
 }) => {
-
   return (
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title="Add Member"
+      title={editingMember ? "Edit Member" : "Add Member"}
       size="xl"
-      ariaLabel={"Add Member Member"}
+      ariaLabel={editingMember ? "Edit Member" : "Add Member"}
       ariaDescribedBy="member-form"
     >
       <div id="member-form">

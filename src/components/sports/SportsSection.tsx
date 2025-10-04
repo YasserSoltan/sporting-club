@@ -37,7 +37,7 @@ const SportsSection = ({ sports }: { sports: Sport[] }) => {
     <div>
       {/* Header */}
       <div className="bg-white dark:bg-card shadow-sm border-b border-gray-200 dark:border-gray-700 mb-6">
-        <div className="p-6">
+        <div className="p-6 ">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
             <div>
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
